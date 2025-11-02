@@ -1,36 +1,218 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NMTSA - Next.js Modern TypeScript Application
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-16.0.1-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-First, run the development server:
+A production-ready, industry-level Next.js application with comprehensive folder structure for Frontend, Backend, APIs, and AWS automation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
+- [Development](#-development)
+- [Deployment](#-deployment)
+- [Documentation](#-documentation)
+- [Contributing](#-contributing)
+
+## ✨ Features
+
+- 🎯 **Modern Architecture** - Industry-standard folder organization
+- 🔐 **Authentication Ready** - JWT-based authentication structure
+- 🚀 **AWS Integration** - Automated deployment scripts for S3, EC2, CloudFront
+- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
+- 🔧 **Type Safety** - Full TypeScript support with strict mode
+- 📊 **API Ready** - Structured backend with controllers, services, and middleware
+- 🧪 **Test Ready** - Organized test structure (unit, integration, e2e)
+- 📦 **Modular Design** - Separation of concerns with clear boundaries
+- 🔄 **CI/CD Ready** - GitHub Actions workflow included
+- 📚 **Well Documented** - Comprehensive documentation
+
+## 🛠 Tech Stack
+
+### Frontend
+- **Framework:** Next.js 16.0.1 (App Router)
+- **Language:** TypeScript 5.x
+- **Styling:** Tailwind CSS 4.x
+- **State Management:** (Ready for Redux/Zustand)
+
+### Backend
+- **API:** Next.js API Routes
+- **Database:** (PostgreSQL/MongoDB ready)
+- **Authentication:** JWT
+
+### Infrastructure
+- **Cloud:** AWS (S3, EC2, CloudFront)
+- **IaC:** CloudFormation
+- **CI/CD:** GitHub Actions
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ installed
+- npm or yarn package manager
+- AWS CLI (for deployment)
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```powershell
+   git clone https://github.com/VanGoghCode/NMTSA.git
+   cd NMTSA
+   ```
+
+2. **Install dependencies**
+   ```powershell
+   .\scripts\setup\install-dependencies.ps1
+   # or
+   npm install
+   ```
+
+3. **Configure environment variables**
+   ```powershell
+   Copy-Item .env.example .env
+   # Edit .env with your configuration
+   ```
+
+4. **Run development server**
+   ```powershell
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+nmtsa/
+├── app/                    # Next.js App Router
+├── src/                    # Frontend source code
+│   ├── components/        # React components
+│   ├── hooks/            # Custom hooks
+│   ├── lib/              # Core libraries & API client
+│   ├── types/            # TypeScript definitions
+│   ├── config/           # Frontend configuration
+│   └── services/         # Business logic services
+├── server/                # Backend server code
+│   ├── api/              # API routes
+│   ├── controllers/      # Request controllers
+│   ├── models/           # Data models
+│   ├── services/         # Business logic
+│   ├── middleware/       # Middleware functions
+│   └── config/           # Server configuration
+├── scripts/               # Automation scripts
+│   ├── aws/              # AWS deployment scripts
+│   ├── deploy/           # Deployment automation
+│   ├── db/               # Database scripts
+│   └── setup/            # Setup scripts
+├── tests/                 # Test files
+│   ├── unit/             # Unit tests
+│   ├── integration/      # Integration tests
+│   └── e2e/              # End-to-end tests
+├── docs/                  # Documentation
+└── .aws/                  # AWS configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For detailed structure, see [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Available Scripts
 
-## Learn More
+```powershell
+# Development
+npm run dev              # Start development server
+npm run build            # Build for production
+npm run start            # Start production server
+npm run lint             # Run ESLint
 
-To learn more about Next.js, take a look at the following resources:
+# Deployment
+.\scripts\deploy\deploy.ps1 -Environment production
+.\scripts\aws\deploy-s3.ps1 -BucketName your-bucket
+.\scripts\aws\setup-ec2.ps1 -InstanceType t2.micro
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Code Style
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Follow TypeScript strict mode
+- Use ESLint for code quality
+- Follow conventional commits
+- Write self-documenting code
 
-## Deploy on Vercel
+## 🌐 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### AWS S3 + CloudFront
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```powershell
+# Deploy static assets to S3
+.\scripts\aws\deploy-s3.ps1 -BucketName your-bucket-name
+
+# Deploy with CloudFormation
+.\scripts\aws\deploy-cloudformation.ps1 `
+  -StackName nmtsa-stack `
+  -S3BucketName your-bucket `
+  -Environment production
+```
+
+### AWS EC2
+
+```powershell
+# Setup EC2 instance
+.\scripts\aws\setup-ec2.ps1 -InstanceType t2.small
+```
+
+### Vercel (Recommended)
+
+```powershell
+npm i -g vercel
+vercel
+```
+
+For detailed deployment instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+
+## 📚 Documentation
+
+- [Architecture](docs/ARCHITECTURE.md) - System architecture overview
+- [API Documentation](docs/API.md) - API endpoints and usage
+- [Deployment Guide](docs/DEPLOYMENT.md) - Deployment instructions
+- [Contributing](docs/CONTRIBUTING.md) - Contribution guidelines
+- [Project Structure](PROJECT_STRUCTURE.md) - Detailed folder structure
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) for details.
+
+### Development Workflow
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 👥 Authors
+
+- VanGoghCode - Initial work
+
+## 🙏 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- Powered by [Vercel](https://vercel.com)
+- AWS Integration
+
+## 📞 Support
+
+For support, please open an issue in the GitHub repository.
+
+---
+
+Made with ❤️ by VanGoghCode
