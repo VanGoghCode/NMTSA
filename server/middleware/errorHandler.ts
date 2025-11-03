@@ -7,9 +7,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export class ApiError extends Error {
   statusCode: number;
-  details?: any;
+  details?: Record<string, unknown>;
 
-  constructor(message: string, statusCode: number = 500, details?: any) {
+  constructor(message: string, statusCode: number = 500, details?: Record<string, unknown>) {
     super(message);
     this.statusCode = statusCode;
     this.details = details;

@@ -39,5 +39,5 @@ export interface PaginatedResponse<T> {
 export type ErrorResponse = {
   error: string;
   statusCode: number;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
 };
