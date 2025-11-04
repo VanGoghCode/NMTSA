@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Node.js 18+ installed
+- Node.js 20.9.0+ installed (required for Next.js)
 - AWS CLI configured with credentials
 - AWS account with appropriate permissions
 - Git repository access

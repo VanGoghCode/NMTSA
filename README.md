@@ -52,7 +52,7 @@ A production-ready, industry-level Next.js application with comprehensive folder
 
 ### Prerequisites
 
-- Node.js 18+ installed
+- Node.js 20.9.0+ installed (required for Next.js 16)
 - npm or yarn package manager
 - AWS CLI (for deployment)
 - Git
