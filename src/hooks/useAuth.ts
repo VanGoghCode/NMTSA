@@ -33,7 +33,7 @@ export function useAuth(): UseAuthReturn {
     try {
       const response = await apiClient.get<{ data: User }>('/users/me');
       setUser(response.data);
-    } catch (error) {
+    } catch {
       localStorage.removeItem('token');
     } finally {
       setIsLoading(false);
@@ -48,7 +48,7 @@ export function useAuth(): UseAuthReturn {
       );
       localStorage.setItem('token', response.data.token);
       setUser(response.data.user);
-    } catch (error) {
+    } catch {
       throw new Error('Login failed');
     }
   };
@@ -66,7 +66,7 @@ export function useAuth(): UseAuthReturn {
       );
       localStorage.setItem('token', response.data.token);
       setUser(response.data.user);
-    } catch (error) {
+    } catch {
       throw new Error('Registration failed');
     }
   };
