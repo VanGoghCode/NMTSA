@@ -91,7 +91,7 @@ jobs:
           fi
       
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v4
         if: success()
         with:
           name: build-artifacts
@@ -121,7 +121,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       
       - name: Download build artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v4
         with:
           name: build-artifacts
           path: .next/
@@ -163,7 +163,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       
       - name: Download build artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v4
         with:
           name: build-artifacts
           path: .next/
