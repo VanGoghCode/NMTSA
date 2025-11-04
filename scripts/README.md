@@ -6,7 +6,6 @@ This directory contains automation scripts for deployment, AWS operations, datab
 
 ```
 scripts/
-├── aws/       # AWS automation scripts (S3, EC2, Lambda, CloudFormation)
 ├── deploy/    # Deployment scripts
 ├── db/        # Database migration and seed scripts
 └── setup/     # Project setup and initialization scripts
@@ -14,14 +13,19 @@ scripts/
 
 ## Usage
 
+### Deployment
+Website deployments are handled by AWS Amplify Hosting. No manual S3 upload is required.
+
 ### PowerShell Scripts
 ```powershell
-.\scripts\aws\deploy-s3.ps1
+# Example: Run deployment script
+./scripts/deploy/deploy.ps1 -Environment production
 ```
 
 ### Bash Scripts (WSL/Git Bash)
 ```bash
-bash scripts/aws/deploy-s3.sh
+# Deployments are handled by AWS Amplify Hosting
+echo "Push to main branch to trigger Amplify deployment"
 ```
 
 ## Best Practices

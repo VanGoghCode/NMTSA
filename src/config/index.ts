@@ -14,7 +14,6 @@ export const config = {
   },
   aws: {
     region: process.env.NEXT_PUBLIC_AWS_REGION || 'us-east-1',
-    s3Bucket: process.env.NEXT_PUBLIC_S3_BUCKET || '',
   },
   features: {
     enableAnalytics: process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === 'true',

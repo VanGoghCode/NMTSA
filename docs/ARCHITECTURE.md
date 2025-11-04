@@ -19,9 +19,7 @@ NMTSA is built with a modern, scalable architecture using Next.js, TypeScript, a
 
 ### Infrastructure
 - **Cloud Provider**: AWS
-- **Storage**: S3
-- **Compute**: EC2 (optional)
-- **CDN**: CloudFront (optional)
+- **Hosting**: AWS Amplify
 
 ## Directory Structure
 
@@ -42,8 +40,8 @@ nmtsa/
 │   ├── services/         # Services
 │   └── middleware/       # Middleware
 ├── scripts/               # Automation scripts
-│   ├── aws/              # AWS scripts
 │   ├── deploy/           # Deployment scripts
+│   ├── db/               # Database scripts
 │   └── setup/            # Setup scripts
 ├── tests/                 # Test files
 └── docs/                  # Documentation

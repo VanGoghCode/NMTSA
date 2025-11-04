@@ -45,50 +45,33 @@ npm run start
 
 ## Deployment Options
 
-### Option 1: AWS S3 + CloudFront (Static Export)
+### AWS Amplify Hosting (Recommended)
 
-1. **Configure Next.js for static export** (if needed)
-2. **Build and export**
-   ```powershell
-   npm run build
-   ```
-3. **Deploy to S3**
-   ```powershell
-   .\scripts\aws\deploy-s3.ps1 -BucketName your-bucket-name
-   ```
+Amplify Hosting provides CI/CD, preview builds, custom domains, and supports Next.js (static and SSR) out of the box.
 
-### Option 2: AWS EC2 (Server-Side Rendering)
+1. **Prepare the repo**
+   - Ensure `amplify.yml` exists in the repo root (provided in this repo) to define build steps.
+   - Optional: `.nvmrc` set to `20` to match Amplify's Node runtime.
 
-1. **Setup EC2 instance**
-   ```powershell
-   .\scripts\aws\setup-ec2.ps1 -InstanceType t2.small
-   ```
+2. **Create an Amplify app (Console)**
+   - Go to AWS Console → Amplify Hosting → Get started.
+   - Connect your GitHub repository and select the `main` and/or `develop` branches.
+   - Amplify will detect Next.js and create a build pipeline.
 
-2. **SSH into instance**
-   ```bash
-   ssh -i your-key.pem ec2-user@your-instance-ip
-   ```
+3. **Configure environment variables**
+   - In Amplify → App settings → Environment variables, add any `NEXT_PUBLIC_*` and server-side vars your app needs.
+   - Re-deploy after saving.
 
-3. **Deploy application**
-   ```bash
-   git clone your-repo-url
-   cd nmtsa
-   npm install
-   npm run build
-   npm run start
-   ```
+4. **Domains and redirects**
+   - Add a custom domain in Amplify → Domain management.
+   - Amplify auto-configures HTTPS. Add any redirects/rewrites as needed.
 
-### Option 3: Vercel (Recommended for Next.js)
+5. **PR previews (optional)**
+   - Enable "Preview builds" so pull requests get a unique preview URL per branch.
 
-1. **Install Vercel CLI**
-   ```powershell
-   npm i -g vercel
-   ```
-
-2. **Deploy**
-   ```powershell
-   vercel
-   ```
+**Notes:**
+- For purely static sites, Amplify deploys the `./.next` artifacts. For SSR/ISR, Amplify manages server output automatically.
+- This repo deploys via Amplify Hosting; previous S3/CloudFront steps have been removed.
 
 ## Automated Deployment
 
@@ -147,9 +130,9 @@ Use the deployment script for streamlined deployments:
 - Review build logs for errors
 
 ### Deployment Failures
-- Verify AWS credentials
-- Check S3 bucket permissions
-- Ensure security groups allow traffic
+- Verify Amplify build logs
+- Ensure Amplify environment variables are set
+- Check custom domain configuration
 
 ### Runtime Errors
 - Check CloudWatch logs

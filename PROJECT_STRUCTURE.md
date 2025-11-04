@@ -15,7 +15,6 @@ nmtsa/
 ├── tests/                  # Test files
 ├── docs/                   # Documentation
 ├── public/                 # Static assets
-├── .aws/                   # AWS configuration
 ├── .next/                  # Next.js build output (gitignored)
 ├── node_modules/           # Dependencies (gitignored)
 ├── .env                    # Environment variables (gitignored)
@@ -127,12 +126,6 @@ server/
 
 ```
 scripts/
-├── aws/                    # AWS automation
-│   ├── deploy-s3.ps1      # S3 deployment (PowerShell)
-│   ├── deploy-s3.sh       # S3 deployment (Bash)
-│   ├── setup-ec2.ps1      # EC2 setup
-│   ├── setup-cloudfront.ps1
-│   └── backup-s3.ps1
 ├── deploy/                 # Deployment scripts
 │   ├── deploy.ps1         # Main deployment
 │   ├── rollback.ps1       # Rollback deployment
@@ -239,8 +232,9 @@ npm run lint         # Run linter
 
 ### Deployment
 ```powershell
+# Deployments are handled by AWS Amplify Hosting
+# Manual deployment if needed:
 .\scripts\deploy\deploy.ps1 -Environment production
-.\scripts\aws\deploy-s3.ps1 -BucketName your-bucket
 ```
 
 ### Setup

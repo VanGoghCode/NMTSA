@@ -21,7 +21,7 @@ A production-ready, industry-level Next.js application with comprehensive folder
 
 - 🎯 **Modern Architecture** - Industry-standard folder organization
 - 🔐 **Authentication Ready** - JWT-based authentication structure
-- 🚀 **AWS Integration** - Automated deployment scripts for S3, EC2, CloudFront
+- 🚀 **AWS Integration** - AWS Amplify Hosting for automated deployments
 - 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
 - 🔧 **Type Safety** - Full TypeScript support with strict mode
 - 📊 **API Ready** - Structured backend with controllers, services, and middleware
@@ -44,8 +44,7 @@ A production-ready, industry-level Next.js application with comprehensive folder
 - **Authentication:** JWT
 
 ### Infrastructure
-- **Cloud:** AWS (S3, EC2, CloudFront)
-- **IaC:** CloudFormation
+- **Hosting:** AWS Amplify
 - **CI/CD:** GitHub Actions
 
 ## 🚀 Getting Started
@@ -106,7 +105,6 @@ nmtsa/
 │   ├── middleware/       # Middleware functions
 │   └── config/           # Server configuration
 ├── scripts/               # Automation scripts
-│   ├── aws/              # AWS deployment scripts
 │   ├── deploy/           # Deployment automation
 │   ├── db/               # Database scripts
 │   └── setup/            # Setup scripts
@@ -114,8 +112,7 @@ nmtsa/
 │   ├── unit/             # Unit tests
 │   ├── integration/      # Integration tests
 │   └── e2e/              # End-to-end tests
-├── docs/                  # Documentation
-└── .aws/                  # AWS configuration
+└── docs/                  # Documentation
 ```
 
 For detailed structure, see [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
@@ -133,8 +130,6 @@ npm run lint             # Run ESLint
 
 # Deployment
 .\scripts\deploy\deploy.ps1 -Environment production
-.\scripts\aws\deploy-s3.ps1 -BucketName your-bucket
-.\scripts\aws\setup-ec2.ps1 -InstanceType t2.micro
 ```
 
 ### Code Style
@@ -146,31 +141,15 @@ npm run lint             # Run ESLint
 
 ## 🌐 Deployment
 
-### AWS S3 + CloudFront
+### AWS Amplify Hosting
+
+This project uses AWS Amplify Hosting for automated deployments. Deployments are triggered automatically on push to the main branch via the `amplify.yml` configuration.
+
+### Manual Deployment
 
 ```powershell
-# Deploy static assets to S3
-.\scripts\aws\deploy-s3.ps1 -BucketName your-bucket-name
-
-# Deploy with CloudFormation
-.\scripts\aws\deploy-cloudformation.ps1 `
-  -StackName nmtsa-stack `
-  -S3BucketName your-bucket `
-  -Environment production
-```
-
-### AWS EC2
-
-```powershell
-# Setup EC2 instance
-.\scripts\aws\setup-ec2.ps1 -InstanceType t2.small
-```
-
-### Vercel (Recommended)
-
-```powershell
-npm i -g vercel
-vercel
+# Deploy using the deployment script
+.\scripts\deploy\deploy.ps1 -Environment production
 ```
 
 For detailed deployment instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
@@ -180,12 +159,7 @@ For detailed deployment instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.m
 - [Architecture](docs/ARCHITECTURE.md) - System architecture overview
 - [API Documentation](docs/API.md) - API endpoints and usage
 - [Deployment Guide](docs/DEPLOYMENT.md) - Deployment instructions
-- [Contributing](docs/CONTRIBUTING.md) - Contribution guidelines
 - [Project Structure](PROJECT_STRUCTURE.md) - Detailed folder structure
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) for details.
 
 ### Development Workflow
 
@@ -206,8 +180,7 @@ This project is licensed under the MIT License.
 ## 🙏 Acknowledgments
 
 - Built with [Next.js](https://nextjs.org/)
-- Powered by [Vercel](https://vercel.com)
-- AWS Integration
+- Hosted on [AWS Amplify](https://aws.amazon.com/amplify/)
 
 ## 📞 Support
 
@@ -215,4 +188,4 @@ For support, please open an issue in the GitHub repository.
 
 ---
 
-Made with ❤️ by VanGoghCode
+Made with ❤️ by Kirtankumar Thummar
