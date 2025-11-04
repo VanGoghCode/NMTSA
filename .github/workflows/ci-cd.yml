@@ -71,6 +71,8 @@ jobs:
         with:
           name: build-artifacts
           path: .next/
+          retention-days: 1
+          if-no-files-found: error
 
   # Deploy to Development
   deploy-dev:
@@ -85,6 +87,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
       
       - name: Download build artifacts
         uses: actions/download-artifact@v5
@@ -122,6 +129,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
       
       - name: Download build artifacts
         uses: actions/download-artifact@v5
